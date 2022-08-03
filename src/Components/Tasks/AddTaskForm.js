@@ -62,6 +62,7 @@ const AddTaskForm = () => {
     onSubmit: async (values) => {
       await dispatch(AddNewTask(values));
       await dispatch(reset());
+      await dispatch(getAllTasks(id));
     },
   });
 
@@ -76,7 +77,6 @@ const AddTaskForm = () => {
       setSuccessMassage("Created Succesfully ");
       formik.values.name = "";
       formik.values.description = "";
-      dispatch(getAllTasks(id));
     }
 
     dispatch(reset());

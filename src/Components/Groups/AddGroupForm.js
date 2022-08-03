@@ -34,8 +34,9 @@ const AddGroupForm = () => {
       name: "",
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      dispatch(AddNewGroup(values));
+    onSubmit: async (values) => {
+      await dispatch(AddNewGroup(values));
+      await dispatch(getAllGroups());
     },
   });
 
@@ -49,7 +50,6 @@ const AddGroupForm = () => {
       setOpenSuccess(true);
       setSuccessMassage("Created Succesfully ");
       formik.values.name = "";
-      dispatch(getAllGroups());
     }
 
     dispatch(reset());
